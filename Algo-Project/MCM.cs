@@ -15,11 +15,8 @@ namespace Algo_Project
     {
         private string filename;
         private string str1;
-        private string str2;
         private int left;
         private int right;
-        private int L1;
-        private int L2;
         public int[] dims;
         public long[,] lookup;
         public int[,] dense;
@@ -108,9 +105,18 @@ namespace Algo_Project
             // Matrix M[i] has dimension dims[i-1] x dims[i] for i = 1..n
             // input is 10 x 30 matrix, 30 x 5 matrix, 5 x 60 matrix
             int n = dims.Length;
-
+            lookup = new long[n, n];
+            dense = new int[n, n];
             long min_cost = MatrixChainMultiplication(dims, 0, n - 1);
 
+            string dims_string = "";
+
+            for (int i = 0; i < dims.Length; i++)
+            {
+                dims_string += dims[i].ToString() + " ";
+            }
+            
+            MessageBox.Show(dims_string + "\n" + min_cost.ToString());
         }
 
         private void Load_String()
@@ -129,7 +135,7 @@ namespace Algo_Project
                 textBox1.Name = "textBox1";
                 textBox1.Size = new System.Drawing.Size(44, 32);
                 textBox1.TabIndex = 3;
-                textBox1.Text = str1[i].ToString();
+                textBox1.Text = i.ToString();
                 textBox1.TextAlign = HorizontalAlignment.Center;
                 textBox1.ReadOnly = true;
                 left = left + 50;
@@ -147,7 +153,7 @@ namespace Algo_Project
                 textBox1.Name = "textBox1";
                 textBox1.Size = new System.Drawing.Size(44, 32);
                 textBox1.TabIndex = 3;
-                textBox1.Text = str2[i].ToString();
+                textBox1.Text = i.ToString();
                 textBox1.TextAlign = HorizontalAlignment.Center;
                 textBox1.ReadOnly = true;
                 right = right + 38;
@@ -160,9 +166,9 @@ namespace Algo_Project
             left = 60;
             right = 173;
 
-            for (int i = 0; i <= L2; i++)
+            for (int i = 0; i <= dims.Length; i++)
             {
-                for (int j = 0; j <= L1; j++)
+                for (int j = 0; j <= dims.Length; j++)
                 {
 
                     TextBox textBox1 = new TextBox();
