@@ -109,7 +109,7 @@ namespace Algo_Project
         private void Load_String()
         {
             int L2 = sum / 2;
-            left = 110;
+            left = 60;
             right = 135;
             for (int i = 0; i <= L2; i++)
             {
@@ -124,16 +124,16 @@ namespace Algo_Project
                 textBox1.Text = i.ToString();
                 textBox1.TextAlign = HorizontalAlignment.Center;
                 textBox1.ReadOnly = true;
-                right = right + 38;
+                left = left + 50;
             }
 
 
             int L1 = temparr.Length;
-            left = 110;
-            right = 135;
 
             string brack = "";
 
+            left = 10;
+            right = 211;
             for (int i = 0; i < L1; i++)
             {
                 TextBox textBox1 = new TextBox();
@@ -148,28 +148,10 @@ namespace Algo_Project
                 textBox1.Text =  brack;
                 textBox1.TextAlign = HorizontalAlignment.Center;
                 textBox1.ReadOnly = true;
-                left = left + 50;
+                right = right + 38;
                 brack += ",";
             }
 
-            int L2 = sum/2;
-            left = 10;
-            right = 183;
-            for (int i = 0; i <= L2; i++)
-            {
-                TextBox textBox1 = new TextBox();
-                this.Controls.Add(textBox1);
-                textBox1.BackColor = System.Drawing.Color.White;
-                textBox1.ForeColor = System.Drawing.Color.Black;
-                textBox1.Location = new System.Drawing.Point(left, right);
-                textBox1.Name = "textBox1";
-                textBox1.Size = new System.Drawing.Size(44, 32);
-                textBox1.TabIndex = 3;
-                textBox1.Text = i.ToString();
-                textBox1.TextAlign = HorizontalAlignment.Center;
-                textBox1.ReadOnly = true;
-                right = right + 38;
-            }
         }
 
         private void Load_Table()
@@ -178,9 +160,9 @@ namespace Algo_Project
             left = 60;
             right = 173;
 
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i <= sum/2+1; i++)
             {
-                for (int j = 0; j <= sum; j++)
+                for (int j = 0; j < n; j++)
                 {
 
                     TextBox textBox1 = new TextBox();
@@ -203,6 +185,7 @@ namespace Algo_Project
             }
 
             left = 10;
+            right = right + 38;
             back_button.Location = new Point(left, right);
         }
 
@@ -212,7 +195,7 @@ namespace Algo_Project
             disp_groupBox.Visible = false;
             table_button.Visible = false;
             Load_String();
-            //Load_Table();
+            Load_Table();
         }
     }
 }
