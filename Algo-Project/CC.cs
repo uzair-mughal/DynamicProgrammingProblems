@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Algo_Project
 {
-    public partial class CoinChange : Form
+    public partial class CC : Form
     {
-        public CoinChange()
+        public CC()
         {
             InitializeComponent();
         }

@@ -27,7 +27,7 @@ namespace Algo_Project
 
         private void button9_Click(object sender, EventArgs e)
         {
-            CoinChange obj = new CoinChange();
+            CC obj = new CC();
             this.Hide();
             obj.Show();
         }
@@ -141,6 +141,9 @@ namespace Algo_Project
             if (selected_file[0] == 'D')
             {
                 button4.Enabled = true;
+                button5.Enabled = true;
+                button7.Enabled = true;
+                button9.Enabled = true;
             }
         }
 
@@ -175,6 +178,13 @@ namespace Algo_Project
         private void button5_Click(object sender, EventArgs e)
         {
             MCM obj = new MCM(selected_file);
+            obj.Show();
+            this.Hide();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            PP obj = new PP(selected_file);
             obj.Show();
             this.Hide();
         }

@@ -88,6 +88,7 @@ namespace Algo_Project
                     max = L[i];
             }
             max--;
+
             str1_textBox.Text = str1;
             str2_textBox.Text = temp;
             ans_textBox.Text = max.ToString();

@@ -1,6 +1,6 @@
 ﻿namespace Algo_Project
 {
-    partial class CoinChange
+    partial class CC
     {
         /// <summary>
         /// Required designer variable.
