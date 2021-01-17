@@ -69,7 +69,7 @@
             // back_button
             // 
             this.back_button.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.back_button.Location = new System.Drawing.Point(12, 739);
+            this.back_button.Location = new System.Drawing.Point(12, 437);
             this.back_button.Name = "back_button";
             this.back_button.Size = new System.Drawing.Size(141, 36);
             this.back_button.TabIndex = 6;
@@ -85,7 +85,7 @@
             this.disp_groupBox.Controls.Add(this.label4);
             this.disp_groupBox.Controls.Add(this.label3);
             this.disp_groupBox.Controls.Add(this.label2);
-            this.disp_groupBox.Location = new System.Drawing.Point(20, 257);
+            this.disp_groupBox.Location = new System.Drawing.Point(12, 118);
             this.disp_groupBox.Name = "disp_groupBox";
             this.disp_groupBox.Size = new System.Drawing.Size(1035, 303);
             this.disp_groupBox.TabIndex = 7;
@@ -96,7 +96,7 @@
             this.str1_textBox.Location = new System.Drawing.Point(119, 43);
             this.str1_textBox.Multiline = true;
             this.str1_textBox.Name = "str1_textBox";
-            this.str1_textBox.Size = new System.Drawing.Size(894, 94);
+            this.str1_textBox.Size = new System.Drawing.Size(894, 74);
             this.str1_textBox.TabIndex = 6;
             // 
             // ans_textBox
@@ -111,7 +111,7 @@
             this.str2_textBox.Location = new System.Drawing.Point(119, 143);
             this.str2_textBox.Multiline = true;
             this.str2_textBox.Name = "str2_textBox";
-            this.str2_textBox.Size = new System.Drawing.Size(894, 94);
+            this.str2_textBox.Size = new System.Drawing.Size(894, 72);
             this.str2_textBox.TabIndex = 4;
             // 
             // label4
@@ -144,7 +144,7 @@
             // table_button
             // 
             this.table_button.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.table_button.Location = new System.Drawing.Point(923, 739);
+            this.table_button.Location = new System.Drawing.Point(906, 437);
             this.table_button.Name = "table_button";
             this.table_button.Size = new System.Drawing.Size(141, 36);
             this.table_button.TabIndex = 8;
@@ -157,7 +157,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1076, 787);
+            this.ClientSize = new System.Drawing.Size(1061, 493);
             this.Controls.Add(this.table_button);
             this.Controls.Add(this.disp_groupBox);
             this.Controls.Add(this.back_button);

@@ -152,6 +152,8 @@ namespace Algo_Project
 
         private void table_button_Click(object sender, EventArgs e)
         {
+            this.Size = new Size(1094, 834);
+            this.Location = new Point(400, 160);
             this.AutoScroll = true;
             disp_groupBox.Visible = false;
             table_button.Visible = false;

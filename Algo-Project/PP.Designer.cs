@@ -34,9 +34,7 @@ namespace Algo_Project
             this.disp_groupBox = new System.Windows.Forms.GroupBox();
             this.str1_textBox = new System.Windows.Forms.TextBox();
             this.ans_textBox = new System.Windows.Forms.TextBox();
-            this.str2_textBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.back_button = new System.Windows.Forms.Button();
             this.table_button = new System.Windows.Forms.Button();
@@ -70,70 +68,52 @@ namespace Algo_Project
             // 
             this.disp_groupBox.Controls.Add(this.str1_textBox);
             this.disp_groupBox.Controls.Add(this.ans_textBox);
-            this.disp_groupBox.Controls.Add(this.str2_textBox);
             this.disp_groupBox.Controls.Add(this.label4);
-            this.disp_groupBox.Controls.Add(this.label3);
             this.disp_groupBox.Controls.Add(this.label2);
-            this.disp_groupBox.Location = new System.Drawing.Point(20, 257);
+            this.disp_groupBox.Location = new System.Drawing.Point(12, 119);
             this.disp_groupBox.Name = "disp_groupBox";
-            this.disp_groupBox.Size = new System.Drawing.Size(1035, 303);
+            this.disp_groupBox.Size = new System.Drawing.Size(1035, 223);
             this.disp_groupBox.TabIndex = 11;
             this.disp_groupBox.TabStop = false;
             // 
             // str1_textBox
             // 
-            this.str1_textBox.Location = new System.Drawing.Point(119, 43);
+            this.str1_textBox.Location = new System.Drawing.Point(147, 43);
             this.str1_textBox.Multiline = true;
             this.str1_textBox.Name = "str1_textBox";
-            this.str1_textBox.Size = new System.Drawing.Size(894, 94);
+            this.str1_textBox.Size = new System.Drawing.Size(866, 83);
             this.str1_textBox.TabIndex = 6;
             // 
             // ans_textBox
             // 
-            this.ans_textBox.Location = new System.Drawing.Point(119, 243);
+            this.ans_textBox.Location = new System.Drawing.Point(147, 143);
             this.ans_textBox.Name = "ans_textBox";
-            this.ans_textBox.Size = new System.Drawing.Size(100, 32);
+            this.ans_textBox.Size = new System.Drawing.Size(586, 32);
             this.ans_textBox.TabIndex = 5;
-            // 
-            // str2_textBox
-            // 
-            this.str2_textBox.Location = new System.Drawing.Point(119, 143);
-            this.str2_textBox.Multiline = true;
-            this.str2_textBox.Name = "str2_textBox";
-            this.str2_textBox.Size = new System.Drawing.Size(894, 94);
-            this.str2_textBox.TabIndex = 4;
+            this.ans_textBox.TextChanged += new System.EventHandler(this.ans_textBox_TextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 246);
+            this.label4.Location = new System.Drawing.Point(46, 146);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 23);
             this.label4.TabIndex = 2;
             this.label4.Text = "Answer:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 146);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 23);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "String2:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(26, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 23);
+            this.label2.Size = new System.Drawing.Size(115, 23);
             this.label2.TabIndex = 0;
-            this.label2.Text = "String1:";
+            this.label2.Text = "Sequence:";
             // 
             // back_button
             // 
             this.back_button.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.back_button.Location = new System.Drawing.Point(12, 739);
+            this.back_button.Location = new System.Drawing.Point(12, 358);
             this.back_button.Name = "back_button";
             this.back_button.Size = new System.Drawing.Size(141, 36);
             this.back_button.TabIndex = 10;
@@ -144,7 +124,7 @@ namespace Algo_Project
             // table_button
             // 
             this.table_button.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.table_button.Location = new System.Drawing.Point(923, 739);
+            this.table_button.Location = new System.Drawing.Point(911, 358);
             this.table_button.Name = "table_button";
             this.table_button.Size = new System.Drawing.Size(141, 36);
             this.table_button.TabIndex = 12;
@@ -156,13 +136,13 @@ namespace Algo_Project
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1076, 787);
+            this.ClientSize = new System.Drawing.Size(1064, 410);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.disp_groupBox);
             this.Controls.Add(this.back_button);
             this.Controls.Add(this.table_button);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PP";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PP";
@@ -182,9 +162,7 @@ namespace Algo_Project
         private System.Windows.Forms.GroupBox disp_groupBox;
         private System.Windows.Forms.TextBox str1_textBox;
         private System.Windows.Forms.TextBox ans_textBox;
-        private System.Windows.Forms.TextBox str2_textBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button back_button;
         private System.Windows.Forms.Button table_button;
