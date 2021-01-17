@@ -19,6 +19,11 @@ namespace Algo_Project
         {
             InitializeComponent();
         }
+        public Main_Panel(string temp)
+        {
+            create_Files_ABC();
+            InitializeComponent();
+        }
 
         private void quit_button_Click(object sender, EventArgs e)
         {
@@ -27,7 +32,7 @@ namespace Algo_Project
 
         private void button9_Click(object sender, EventArgs e)
         {
-            CC obj = new CC();
+            CC obj = new CC(selected_file);
             this.Hide();
             obj.Show();
         }
@@ -87,7 +92,7 @@ namespace Algo_Project
             {
                 string fileName = "DEGI_";
 
-                int num = rand.Next(30, 100);
+                int num = rand.Next(0, 30);
 
                 for (int j = 0; j < num; j++)
                 {
@@ -104,7 +109,6 @@ namespace Algo_Project
         private void Main_Panel_Load(object sender, EventArgs e)
         {
             Fill_ComboBox();
-            create_Files_ABC();
             disable_buttons();
         }
 

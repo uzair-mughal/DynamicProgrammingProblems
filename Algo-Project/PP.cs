@@ -55,29 +55,21 @@ namespace Algo_Project
         }
         private bool subsetSum(int[] arr, int n, int sum)
         {
-            // T[i][j] stores true if subset with sum j can be attained with
-            // using items up to first i items
-            T= new bool [n + 1,sum +1];
+            T = new bool [n + 1,sum +1];
 
-            // if 0 items in the list and sum is non-zero
             for (int j = 1; j <= sum; j++)
                 T[0,j] = false;
 
-            // if sum is zero
             for (int i = 0; i <= n; i++)
                 T[i,0] = true;
 
-            // do for ith item
             for (int i = 1; i <= n; i++)
             {
-                // consider all sum from 1 to sum
                 for (int j = 1; j <= sum; j++)
                 {
-                    // don't include ith element if j-arr[i-1] is negative
                     if (arr[i - 1] > j)
                         T[i,j] = T[i - 1,j];
                     else
-                        // find subset with sum j by excluding or including the ith item
                         T[i,j] = T[i - 1,j] || T[i - 1,j - arr[i - 1]];
                 }
             }
@@ -86,14 +78,23 @@ namespace Algo_Project
         }
         private void Algo()
         {
-            n = temparr.Length;
+            n = arr.Length;
             
             for (int i = 0; i < n; i++)
-                sum += temparr[i];
+                sum += arr[i];
 
-            if((sum % 2 == 0) && subsetSum(temparr, n, sum / 2))
+            if((sum % 2 == 0) && subsetSum(arr, n, sum / 2))
             {
-                
+                ans_textBox.Text = "Yes!, Subsets are available";
+            }
+            else if(sum % 2 != 0)
+            {
+                table_button.Enabled = false;
+                ans_textBox.Text = "No!, Subsets are not available (ODD SUM)";
+            }
+            else
+            {
+                ans_textBox.Text = "No!, Subsets are not available";
             }
 
             str1_textBox.Text = str1;
@@ -128,13 +129,13 @@ namespace Algo_Project
             }
 
 
-            int L1 = temparr.Length;
+            int L1 = arr.Length;
 
             string brack = "";
 
             left = 10;
             right = 211;
-            for (int i = 0; i < L1; i++)
+            for (int i = 0; i < L1-1; i++)
             {
                 TextBox textBox1 = new TextBox();
                 this.Controls.Add(textBox1);
@@ -144,7 +145,7 @@ namespace Algo_Project
                 textBox1.Name = "textBox1";
                 textBox1.Size = new System.Drawing.Size(44, 32);
                 textBox1.TabIndex = 3;
-                brack += temparr[i].ToString();
+                brack += arr[i].ToString();
                 textBox1.Text =  brack;
                 textBox1.TextAlign = HorizontalAlignment.Center;
                 textBox1.ReadOnly = true;
@@ -160,11 +161,10 @@ namespace Algo_Project
             left = 60;
             right = 173;
 
-            for (int i = 0; i <= sum/2+1; i++)
+            for (int i = 0; i < n; i++)
             {
-                for (int j = 0; j < n; j++)
+                for (int j = 0; j <= sum/2; j++)
                 {
-
                     TextBox textBox1 = new TextBox();
                     this.Controls.Add(textBox1);
                     textBox1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
@@ -173,11 +173,15 @@ namespace Algo_Project
                     textBox1.Name = "textBox1";
                     textBox1.Size = new System.Drawing.Size(44, 32);
                     textBox1.TabIndex = 3;
-                    textBox1.Text = T[i, j].ToString();
+                    if (T[i, j] == true)
+                        textBox1.Text = "T";
+                    else
+                        textBox1.Text = "F";
+
+                    
                     textBox1.TextAlign = HorizontalAlignment.Center;
                     textBox1.ReadOnly = true;
                     left = left + 50;
-
                 }
 
                 right = right + 38;
@@ -191,6 +195,8 @@ namespace Algo_Project
 
         private void table_button_Click(object sender, EventArgs e)
         {
+            this.Size = new Size(1094, 834);
+            this.Location = new Point(400,160);
             this.AutoScroll = true;
             disp_groupBox.Visible = false;
             table_button.Visible = false;
@@ -203,6 +209,11 @@ namespace Algo_Project
             Main_Panel obj = new Main_Panel();
             obj.Show();
             this.Hide();
+        }
+
+        private void ans_textBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
