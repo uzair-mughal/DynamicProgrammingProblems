@@ -92,7 +92,7 @@ namespace Algo_Project
             {
                 string fileName = "DEGI_";
 
-                int num = rand.Next(0, 100);
+                int num = rand.Next(0, 30);
 
                 for (int j = 0; j < num; j++)
                 {

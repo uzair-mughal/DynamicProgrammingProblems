@@ -33,7 +33,7 @@ namespace Algo_Project
             string[] temp = str1.Split(',');
 
 
-            arr = new int[temp.Length];
+            arr = new int[temp.Length-1];
 
             int i = 0;
             str1 = string.Empty;
@@ -45,12 +45,15 @@ namespace Algo_Project
                     break;
                 arr[i] = Convert.ToInt32(obj);
                 str1 += obj + " ";
+                
                 i++;
+                
             }
         }
         private void Algo()
         {
-            Array.Sort(arr, 0, arr.Length, null);
+            Array.Sort(arr);
+
             int[] find_MIN = new int[2];
             Result = new int[arr.Length, Coins_Required + 1];
 
