@@ -171,5 +171,12 @@ namespace Algo_Project
             obj.Show();
             this.Hide();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            MCM obj = new MCM(selected_file);
+            obj.Show();
+            this.Hide();
+        }
     }
 }
