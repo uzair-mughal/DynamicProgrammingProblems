@@ -197,5 +197,12 @@ namespace Algo_Project
             Load_String();
             Load_Table();
         }
+
+        private void back_button_Click(object sender, EventArgs e)
+        {
+            Main_Panel obj = new Main_Panel();
+            obj.Show();
+            this.Hide();
+        }
     }
 }

@@ -139,6 +139,7 @@ namespace Algo_Project
             this.back_button.TabIndex = 10;
             this.back_button.Text = "Back";
             this.back_button.UseVisualStyleBackColor = true;
+            this.back_button.Click += new System.EventHandler(this.back_button_Click);
             // 
             // table_button
             // 
