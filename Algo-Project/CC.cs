@@ -149,6 +149,7 @@ namespace Algo_Project
                 
             }
 
+            left = 60;
             right = right + 38;
             back_button.Location = new Point(left, right);
 

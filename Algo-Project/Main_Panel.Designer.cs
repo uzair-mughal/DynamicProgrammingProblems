@@ -46,9 +46,13 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.files_comboBox = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -150,6 +154,7 @@
             this.button6.TabIndex = 8;
             this.button6.Text = "F-0/1 Knapsack Problem";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click_1);
             // 
             // button5
             // 
@@ -218,7 +223,7 @@
             this.groupBox2.Controls.Add(this.files_comboBox);
             this.groupBox2.Location = new System.Drawing.Point(22, 180);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(444, 110);
+            this.groupBox2.Size = new System.Drawing.Size(444, 121);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Select File:";
@@ -243,12 +248,42 @@
             this.files_comboBox.TabIndex = 0;
             this.files_comboBox.SelectedIndexChanged += new System.EventHandler(this.files_comboBox_SelectedIndexChanged);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(17, 45);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(304, 23);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Uzair Ahmed Mughal 18K-0179";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Location = new System.Drawing.Point(483, 180);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(368, 121);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Chreated By:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(17, 73);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(199, 23);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Muzammil 18K-0361";
+            // 
             // Main_Panel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(882, 759);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.quit_button);
             this.Controls.Add(this.groupBox1);
@@ -264,6 +299,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -288,5 +325,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox files_comboBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label5;
     }
 }

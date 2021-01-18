@@ -50,6 +50,11 @@ namespace Algo_Project
                 string fileName = "DEGI_";
                 files_comboBox.Items.Add(fileName + (i + 1).ToString() + ".txt");
             }
+            for (int i = 0; i < 10; i++)
+            {
+                string fileName = "FH_";
+                files_comboBox.Items.Add(fileName + (i + 1).ToString() + ".txt");
+            }
         }
 
         private void create_Files_ABC()
@@ -85,24 +90,52 @@ namespace Algo_Project
             }
 
 
-            string seq="";
+            seq1 = string.Empty;
 
             //For 'D' , 'E' , 'G' and 'I'
             for (int i = 0; i < 10; i++)
             {
                 string fileName = "DEGI_";
 
-                int num = rand.Next(1, 100);
+                int num = rand.Next(0, 100);
 
                 for (int j = 0; j < num; j++)
                 {
-                    seq += rand.Next(30, 100)+",";
+                    seq1 += rand.Next(30, 100)+",";
                 }
                 using (StreamWriter writer = File.CreateText(fileName + (i + 1).ToString() + ".txt"))
                 {
-                    writer.WriteLine(seq);
+                    writer.WriteLine(seq1);
                 }
-                seq = string.Empty; 
+                seq1 = string.Empty; 
+            }
+
+            seq1 = string.Empty;
+            seq2 = string.Empty;
+
+            //For 'F' and 'H'
+            for (int i = 0; i < 10; i++)
+            {
+                string fileName = "FH_";
+
+                int num = rand.Next(10, 100);
+
+                for (int j = 0; j < num; j++)
+                {
+                    seq1 += rand.Next(1, 100) + ",";
+                }
+                for (int j = 0; j < num; j++)
+                {
+                    seq2 += rand.Next(1, 100) + ",";
+                }
+
+                using (StreamWriter writer = File.CreateText(fileName + (i + 1).ToString() + ".txt"))
+                {
+                    writer.WriteLine(seq1);
+                    writer.WriteLine(seq2);
+                }
+                seq1 = string.Empty;
+                seq2 = string.Empty;
             }
         }
 
@@ -149,6 +182,11 @@ namespace Algo_Project
                 button7.Enabled = true;
                 button9.Enabled = true;
             }
+            if (selected_file[0] == 'F')
+            {
+                button6.Enabled = true;
+                button8.Enabled = true;
+            }
         }
 
         private void files_comboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -189,6 +227,20 @@ namespace Algo_Project
         private void button7_Click(object sender, EventArgs e)
         {
             PP obj = new PP(selected_file);
+            obj.Show();
+            this.Hide();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            KS obj = new KS(selected_file);
+            obj.Show();
+            this.Hide();
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            KS obj = new KS(selected_file);
             obj.Show();
             this.Hide();
         }

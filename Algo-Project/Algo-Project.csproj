@@ -52,6 +52,12 @@
     <Compile Include="CC.Designer.cs">
       <DependentUpon>CC.cs</DependentUpon>
     </Compile>
+    <Compile Include="KS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KS.Designer.cs">
+      <DependentUpon>KS.cs</DependentUpon>
+    </Compile>
     <Compile Include="LCS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     </Compile>
     <EmbeddedResource Include="CC.resx">
       <DependentUpon>CC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KS.resx">
+      <DependentUpon>KS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LCS.resx">
       <DependentUpon>LCS.cs</DependentUpon>
