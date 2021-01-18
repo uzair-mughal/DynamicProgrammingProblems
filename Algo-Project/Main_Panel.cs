@@ -244,5 +244,12 @@ namespace Algo_Project
             obj.Show();
             this.Hide();
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            RC obj = new RC(selected_file);
+            obj.Show();
+            this.Hide();
+        }
     }
 }

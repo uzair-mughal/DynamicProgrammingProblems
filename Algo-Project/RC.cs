@@ -11,34 +11,23 @@ using System.IO;
 
 namespace Algo_Project
 {
-    public partial class KS : Form
+    public partial class RC : Form
     {
         private string filename;
         private string str1;
         private string str2;
-        private int[] weights;
-        private int[] vlaues;
+        private int[] lenghts;
+        private int[] prices;
         int[,] Result;
-        private int W = 179;
+        private int RL = 15;
         private int left;
         private int right;
-        public KS(string temp)
+        public RC(string temp)
         {
             filename = temp;
             InitializeComponent();
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void back_button_Click(object sender, EventArgs e)
-        {
-            Main_Panel obj = new Main_Panel();
-            this.Hide();
-            obj.Show();
-        }
         private void ReadFile()
         {
             string[] lines = File.ReadAllLines(filename);
@@ -48,8 +37,8 @@ namespace Algo_Project
             string[] temp1 = str1.Split(',');
             string[] temp2 = str2.Split(',');
 
-            weights = new int[temp1.Length - 1];
-            vlaues = new int[temp2.Length - 1];
+            lenghts = new int[temp1.Length - 1];
+            prices = new int[temp2.Length - 1];
 
             int i = 0;
             str1 = string.Empty;
@@ -59,9 +48,14 @@ namespace Algo_Project
             {
                 if (obj == "")
                     break;
-                weights[i] = Convert.ToInt32(obj);
+                lenghts[i] = Convert.ToInt32(obj);
                 str1 += obj + " ";
                 i++;
+            }
+
+            for (i = 1; i < lenghts.Length; i++)
+            {
+                lenghts[i - 1] = i;
             }
 
             i = 0;
@@ -69,49 +63,71 @@ namespace Algo_Project
             {
                 if (obj == "")
                     break;
-                vlaues[i] = Convert.ToInt32(obj);
+                prices[i] = Convert.ToInt32(obj);
                 str2 += obj + " ";
                 i++;
             }
         }
         private void Algo()
         {
-            int n = vlaues.Length;
+            int n = lenghts.Length;
+            int[] find_max = new int[2];
 
-            Result = new int[n + 1, W + 1];
+            Result = new int[n, RL + 1];
 
-            for (int i = 0; i <= n; i++)
+            for (int i = 0; i < n; i++)
             {
-                for (int w = 0; w <= W; w++)
+                for (int j = 0; j <= RL; j++)
                 {
-                    if (i == 0 || w == 0)
-                        Result[i, w] = 0;
-
-
-                    else if (weights[i - 1] <= w)
-                        Result[i, w] = Math.Max(vlaues[i - 1] + Result[i - 1, w - weights[i - 1]], Result[i - 1, w]);
+                    if (j == 0)
+                    {
+                        Result[i, j] = 0;
+                        continue;
+                    }
+                    if (i == 0)
+                    {
+                        Result[i, j] = Result[i, j - lenghts[i]] + prices[i];
+                    }
                     else
-                        Result[i, w] = Result[i - 1, w];
+                    {
+                        if (lenghts[i] > j)
+                        {
+                            Result[i, j] = Result[i - 1, j];
+                        }
+                        else
+                        {
+                            find_max[0] = Result[i, j - lenghts[i]] + prices[i];
+                            find_max[1] = Result[i - 1, j];
+                            Result[i, j] = find_max.Max();
+                        }
+                    }
                 }
-            }          
+            }
             str1_textBox.Text = str1;
             str2_textBox.Text = str2;
-            ans_textBox.Text = Result[n, W].ToString();
+            ans_textBox.Text = Result[n-1, RL].ToString();
         }
 
-        private void KS_Load(object sender, EventArgs e)
+        private void RC_Load(object sender, EventArgs e)
         {
-            value_label.Visible = false; 
+            value_label.Visible = false;
             weight_label.Visible = false;
             ReadFile();
             Algo();
+        }
+
+        private void back_button_Click(object sender, EventArgs e)
+        {
+            Main_Panel obj = new Main_Panel();
+            this.Hide();
+            obj.Show();
         }
         private void Load_String()
         {
             string[] temp1 = str1.Split(' ');
             string[] temp2 = str2.Split(' ');
 
-            int L1 = temp2.Length-1;
+            int L1 = temp2.Length - 1;
             left = 60;
             right = 211;
 
@@ -131,7 +147,7 @@ namespace Algo_Project
                 right = right + 38;
             }
 
-            int L2 = temp1.Length-1;
+            int L2 = temp1.Length - 1;
             left = 110;
             right = 211;
             for (int i = 0; i < L2; i++)
@@ -150,7 +166,7 @@ namespace Algo_Project
                 right = right + 38;
             }
 
-            int L3 = W;
+            int L3 = RL;
             left = 170;
             right = 135;
             for (int i = 0; i <= L3; i++)
@@ -176,11 +192,11 @@ namespace Algo_Project
             left = 170;
             right = 173;
 
-            int n = vlaues.Length;
+            int n = prices.Length;
 
-            for (int i = 0; i <= n; i++)
+            for (int i = 0; i < n; i++)
             {
-                for (int j = 0; j <= W; j++)
+                for (int j = 0; j <= RL; j++)
                 {
 
                     TextBox textBox1 = new TextBox();
@@ -205,7 +221,6 @@ namespace Algo_Project
             left = 60;
             back_button.Location = new Point(left, right);
         }
-
         private void table_button_Click(object sender, EventArgs e)
         {
             value_label.Visible = true;
@@ -217,11 +232,6 @@ namespace Algo_Project
             table_button.Visible = false;
             Load_String();
             Load_Table();
-        }
-
-        private void value_label_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
