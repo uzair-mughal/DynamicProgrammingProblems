@@ -55,6 +55,11 @@ namespace Algo_Project
                 string fileName = "FH_";
                 files_comboBox.Items.Add(fileName + (i + 1).ToString() + ".txt");
             }
+            for (int i = 0; i < 10; i++)
+            {
+                string fileName = "J_";
+                files_comboBox.Items.Add(fileName + (i + 1).ToString() + ".txt");
+            }
         }
 
         private void create_Files_ABC()
@@ -137,6 +142,38 @@ namespace Algo_Project
                 seq1 = string.Empty;
                 seq2 = string.Empty;
             }
+
+            string name = "uzair";
+            string random = "abcdefghijklmnopqrstuvwxyz";
+            seq1 = string.Empty;
+            //For 'J'
+            for(int i = 0; i < 10; i++)
+            {
+                string fileName = "J_";
+                
+                for(int j = 0; j < 100; j++)
+                {
+                    int len = rand.Next(1, 4);
+
+                    for (int k = 0; k < len; k++)
+                    {
+                        int ind= rand.Next(0, 26);
+                        seq1 += random[ind];
+                    }
+                    seq1 += "\n";
+                }
+                using (StreamWriter writer = File.CreateText(fileName + (i + 1).ToString() + ".txt"))
+                {
+                    writer.WriteLine(name);
+                    writer.WriteLine(seq1);
+                }
+                seq1 = string.Empty;
+
+            }
+
+
+
+
         }
 
         private void Main_Panel_Load(object sender, EventArgs e)
@@ -186,6 +223,10 @@ namespace Algo_Project
             {
                 button6.Enabled = true;
                 button8.Enabled = true;
+            }
+            if (selected_file[0] == 'J')
+            {
+                button10.Enabled = true;
             }
         }
 
@@ -248,6 +289,13 @@ namespace Algo_Project
         private void button8_Click(object sender, EventArgs e)
         {
             RC obj = new RC(selected_file);
+            obj.Show();
+            this.Hide();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            WB obj = new WB(selected_file);
             obj.Show();
             this.Hide();
         }
