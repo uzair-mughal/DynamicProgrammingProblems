@@ -92,11 +92,11 @@ namespace Algo_Project
             {
                 string fileName = "DEGI_";
 
-                int num = rand.Next(4, 5);
+                int num = rand.Next(1, 100);
 
                 for (int j = 0; j < num; j++)
                 {
-                    seq += rand.Next(4, 5)+",";
+                    seq += rand.Next(30, 100)+",";
                 }
                 using (StreamWriter writer = File.CreateText(fileName + (i + 1).ToString() + ".txt"))
                 {
