@@ -34,7 +34,7 @@ namespace Algo_Project
 
             string[] temp = str1.Split(',');
 
-            dims = new int[temp.Length];
+            dims = new int[temp.Length - 1];
 
             int i = 0;
             str1 = string.Empty;
@@ -166,9 +166,9 @@ namespace Algo_Project
             left = 60;
             right = 173;
 
-            for (int i = 0; i <= dims.Length; i++)
+            for (int i = 0; i < dims.Length; i++)
             {
-                for (int j = 0; j <= dims.Length; j++)
+                for (int j = 0; j < dims.Length; j++)
                 {
 
                     TextBox textBox1 = new TextBox();
