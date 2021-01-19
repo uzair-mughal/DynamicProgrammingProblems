@@ -51,55 +51,6 @@ namespace Algo_Project
             }
         }
 
-        //long MatrixChainMultiplication(int[] dims, int i, int j)
-        //{
-        //    // base case: one matrix
-        //    if (j <= i + 1)
-        //        return 0;
-
-        //    // stores minimum number of scalar multiplications (i.e., cost)
-        //    // needed to compute the matrix M[i+1]...M[j] = M[i..j]
-        //    long min = 100000000000;
-        //    int k_min = 10000;
-
-        //    // if sub-problem is seen for the first time, solve it and
-        //    // store its result in a lookup table
-        //    if (lookup[i, j] == 0)
-        //    {
-        //        // take the minimum over each possible position at which the
-        //        // sequence of matrices can be split
-
-        //        /*
-        //            (M[i+1]) x (M[i+2]..................M[j])
-        //            (M[i+1]M[i+2]) x (M[i+3.............M[j])
-        //            ...
-        //            ...
-        //            (M[i+1]M[i+2]............M[j-1]) x (M[j])
-        //        */
-
-        //        for (int k = i + 1; k <= j - 1; k++)
-        //        {
-        //            // recur for M[i+1]..M[k] to get a i x k matrix
-        //            long cost = MatrixChainMultiplication(dims, i, k);
-
-        //            // recur for M[k+1]..M[j] to get a k x j matrix
-        //            cost += MatrixChainMultiplication(dims, k, j);
-
-        //            // cost to multiply two (i x k) and (k x j) matrix
-        //            cost += dims[i] * dims[k] * dims[j];
-
-        //            if (cost < min)
-        //                k_min = k;
-        //            min = cost;
-        //        }
-        //        lookup[i, j] = min;
-        //        dense[i, j] = k_min;
-        //    }
-
-        //    // return min cost to multiply M[j+1]..M[j]
-        //    return lookup[i, j];
-        //}
-
         private void printParenthesis(int j, int i)
         {
             if (j == i)
@@ -155,7 +106,9 @@ namespace Algo_Project
             matrixChainOrder(dims, n);
             printParenthesis(n - 1, 0);
 
+            str1_textBox.Text = str1;
             parenthesisTextBox.Text = parent_str;
+            textBox1.Text = lookup[0, n-1].ToString();
         }
 
         private void Load_String()
@@ -269,7 +222,12 @@ namespace Algo_Project
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Size = new Size(1094, 834);
+            this.Location = new Point(400, 160);
             this.AutoScroll = true;
+            disp_groupBox.Visible = false;
+            button2.Visible = false;
+            button3.Visible = false;
             Load_String();
             Load_Table_Cost();
         }
@@ -289,7 +247,12 @@ namespace Algo_Project
 
         private void button3_Click(object sender, EventArgs e)
         {
+            this.Size = new Size(1094, 834);
+            this.Location = new Point(400, 160);
             this.AutoScroll = true;
+            disp_groupBox.Visible = false;
+            button2.Visible = false;
+            button3.Visible = false;
             Load_String();
             Load_Table_Dense();
         }

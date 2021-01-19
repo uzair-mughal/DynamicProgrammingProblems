@@ -19,7 +19,7 @@ namespace Algo_Project
         private int[] lenghts;
         private int[] prices;
         int[,] Result;
-        private int RL = 15;
+        private int RL = 179;
         private int left;
         private int right;
         public RC(string temp)

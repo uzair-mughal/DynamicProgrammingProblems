@@ -74,7 +74,7 @@ namespace Algo_Project
             {
                 string fileName = "ABC_";
 
-                int len = rand.Next(10, 30);
+                int len = rand.Next(30, 101);
 
                 for(int j = 0; j < len; j++)
                 {
@@ -102,11 +102,11 @@ namespace Algo_Project
             {
                 string fileName = "DEGI_";
 
-                int num = rand.Next(0, 100);
+                int num = rand.Next(0, 101);
 
                 for (int j = 0; j < num; j++)
                 {
-                    seq1 += rand.Next(30, 100)+",";
+                    seq1 += rand.Next(30, 101)+",";
                 }
                 using (StreamWriter writer = File.CreateText(fileName + (i + 1).ToString() + ".txt"))
                 {
@@ -123,15 +123,15 @@ namespace Algo_Project
             {
                 string fileName = "FH_";
 
-                int num = rand.Next(10, 100);
+                int num = rand.Next(10, 101);
 
                 for (int j = 0; j < num; j++)
                 {
-                    seq1 += rand.Next(1, 100) + ",";
+                    seq1 += rand.Next(1, 101) + ",";
                 }
                 for (int j = 0; j < num; j++)
                 {
-                    seq2 += rand.Next(1, 100) + ",";
+                    seq2 += rand.Next(1, 101) + ",";
                 }
 
                 using (StreamWriter writer = File.CreateText(fileName + (i + 1).ToString() + ".txt"))

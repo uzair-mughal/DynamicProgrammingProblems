@@ -21,7 +21,6 @@ namespace Algo_Project
         private int right;
         private int sum = 0;
         private int n;
-        private int[] temparr= { 3, 1, 1, 2, 2, 1 };
 
         public PP(string temp)
         {
