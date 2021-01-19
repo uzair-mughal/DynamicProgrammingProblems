@@ -50,6 +50,16 @@ namespace Algo_Project
                 string fileName = "DEGI_";
                 files_comboBox.Items.Add(fileName + (i + 1).ToString() + ".txt");
             }
+            for (int i = 0; i < 10; i++)
+            {
+                string fileName = "FH_";
+                files_comboBox.Items.Add(fileName + (i + 1).ToString() + ".txt");
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                string fileName = "J_";
+                files_comboBox.Items.Add(fileName + (i + 1).ToString() + ".txt");
+            }
         }
 
         private void create_Files_ABC()
@@ -85,25 +95,85 @@ namespace Algo_Project
             }
 
 
-            string seq="";
+            seq1 = string.Empty;
 
             //For 'D' , 'E' , 'G' and 'I'
             for (int i = 0; i < 10; i++)
             {
                 string fileName = "DEGI_";
 
-                int num = rand.Next(4, 5);
+                int num = rand.Next(0, 100);
 
                 for (int j = 0; j < num; j++)
                 {
-                    seq += rand.Next(4, 5)+",";
+                    seq1 += rand.Next(30, 100)+",";
                 }
                 using (StreamWriter writer = File.CreateText(fileName + (i + 1).ToString() + ".txt"))
                 {
-                    writer.WriteLine(seq);
+                    writer.WriteLine(seq1);
                 }
-                seq = string.Empty; 
+                seq1 = string.Empty; 
             }
+
+            seq1 = string.Empty;
+            seq2 = string.Empty;
+
+            //For 'F' and 'H'
+            for (int i = 0; i < 10; i++)
+            {
+                string fileName = "FH_";
+
+                int num = rand.Next(10, 100);
+
+                for (int j = 0; j < num; j++)
+                {
+                    seq1 += rand.Next(1, 100) + ",";
+                }
+                for (int j = 0; j < num; j++)
+                {
+                    seq2 += rand.Next(1, 100) + ",";
+                }
+
+                using (StreamWriter writer = File.CreateText(fileName + (i + 1).ToString() + ".txt"))
+                {
+                    writer.WriteLine(seq1);
+                    writer.WriteLine(seq2);
+                }
+                seq1 = string.Empty;
+                seq2 = string.Empty;
+            }
+
+            string name = "uzair";
+            string random = "abcdefghijklmnopqrstuvwxyz";
+            seq1 = string.Empty;
+            //For 'J'
+            for(int i = 0; i < 10; i++)
+            {
+                string fileName = "J_";
+                
+                for(int j = 0; j < 100; j++)
+                {
+                    int len = rand.Next(1, 4);
+
+                    for (int k = 0; k < len; k++)
+                    {
+                        int ind= rand.Next(0, 26);
+                        seq1 += random[ind];
+                    }
+                    seq1 += "\n";
+                }
+                using (StreamWriter writer = File.CreateText(fileName + (i + 1).ToString() + ".txt"))
+                {
+                    writer.WriteLine(name);
+                    writer.WriteLine(seq1);
+                }
+                seq1 = string.Empty;
+
+            }
+
+
+
+
         }
 
         private void Main_Panel_Load(object sender, EventArgs e)
@@ -149,6 +219,15 @@ namespace Algo_Project
                 button7.Enabled = true;
                 button9.Enabled = true;
             }
+            if (selected_file[0] == 'F')
+            {
+                button6.Enabled = true;
+                button8.Enabled = true;
+            }
+            if (selected_file[0] == 'J')
+            {
+                button10.Enabled = true;
+            }
         }
 
         private void files_comboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -189,6 +268,34 @@ namespace Algo_Project
         private void button7_Click(object sender, EventArgs e)
         {
             PP obj = new PP(selected_file);
+            obj.Show();
+            this.Hide();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            KS obj = new KS(selected_file);
+            obj.Show();
+            this.Hide();
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            KS obj = new KS(selected_file);
+            obj.Show();
+            this.Hide();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            RC obj = new RC(selected_file);
+            obj.Show();
+            this.Hide();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            WB obj = new WB(selected_file);
             obj.Show();
             this.Hide();
         }

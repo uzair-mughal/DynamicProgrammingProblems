@@ -15,9 +15,9 @@ namespace Algo_Project
     {
         private string filename;
         private string str1;
-        private int[] arr;
-        private int[,] Result;
-        private int Coins_Required = 179;
+        private int[] coins;
+        private int[] Result;
+        private int Change_Reg = 179;
         private int left;
         private int right;
         public CC(string temp)
@@ -33,7 +33,7 @@ namespace Algo_Project
             string[] temp = str1.Split(',');
 
 
-            arr = new int[temp.Length-1];
+            coins = new int[temp.Length-1];
 
             int i = 0;
             str1 = string.Empty;
@@ -43,7 +43,7 @@ namespace Algo_Project
             {
                 if (obj == "")
                     break;
-                arr[i] = Convert.ToInt32(obj);
+                coins[i] = Convert.ToInt32(obj);
                 str1 += obj + " ";
                 
                 i++;
@@ -52,50 +52,29 @@ namespace Algo_Project
         }
         private void Algo()
         {
-            Array.Sort(arr);
+            Array.Sort(coins);
+            int n = coins.Length;
+            Result = new int [Change_Reg + 1];
+            Result[0] = 0;
 
-            int[] find_MIN = new int[2];
-            Result = new int[arr.Length, Coins_Required + 1];
+            for (int i = 1; i <= Change_Reg; i++)
+                Result[i] = int.MaxValue;
 
-            for (int i = 0; i <= Coins_Required; i++)
+            for (int i = 1; i <= Change_Reg; i++)
             {
-                if (arr[0] == 1)
-                {
-                    Result[0, i] = i;
-                }
-                else
-                {
-                    if (i % arr[0] == 0)
+
+                for (int j = 0; j < n; j++)
+                    if (coins[j] <= i)
                     {
-                        Result[0, i] = i / arr[0];
+                        int sub_res = Result[i - coins[j]];
+                        if (sub_res != int.MaxValue &&
+                            sub_res + 1 < Result[i])
+                            Result[i] = sub_res + 1;
                     }
-                }
             }
 
-            for (int i = 1; i < arr.Length; i++)
-            {
-                for (int j = 0; j <= Coins_Required; j++)
-                {
-                    if (j == 0)
-                    {
-                        Result[i, 0] = 0;
-                        continue;
-                    }
-                    if (arr[i] > j)
-                    {
-                        Result[i, j] = Result[i - 1, j];
-                    }
-                    else
-                    {
-                        find_MIN[0] = Result[i - 1, j];
-                        find_MIN[1] = 1 + Result[i, j - arr[i]];
-                        Result[i, j] = find_MIN.Min();
-
-                    }
-                }
-            }
             str1_textBox.Text = str1;
-            ans_textBox.Text = Result[arr.Length-1, Coins_Required].ToString();
+            ans_textBox.Text = Result[Change_Reg].ToString();
         }
         private void CoinChange_Load(object sender, EventArgs e)
         {
@@ -111,78 +90,69 @@ namespace Algo_Project
         }
         private void Load_String()
         {
-            int L1 = Coins_Required;
+            int L1 = Change_Reg;
             left = 60;
             right = 135;
 
+            Label change_label = new Label();
+            this.Controls.Add(change_label);
+            change_label.BackColor = System.Drawing.SystemColors.Control;
+            change_label.ForeColor = System.Drawing.Color.Black;
+            change_label.Location = new System.Drawing.Point(left, right);
+            change_label.Name = "label";
+            change_label.Size = new System.Drawing.Size(200, 32);
+            change_label.TabIndex = 3;
+            change_label.Text = "Change Required";
+
+            left = 300;
+
+            Label required_label = new Label();
+            this.Controls.Add(required_label);
+            required_label.BackColor = System.Drawing.SystemColors.Control;
+            required_label.ForeColor = System.Drawing.Color.Black;
+            required_label.Location = new System.Drawing.Point(left, right);
+            required_label.Name = "label";
+            required_label.Size = new System.Drawing.Size(200, 32);
+            required_label.TabIndex = 3;
+            required_label.Text = "Coins Required";
+
             for (int i = 0; i <= L1; i++)
             {
+                left = 60;
+                right += 38;
+
                 TextBox textBox1 = new TextBox();
                 this.Controls.Add(textBox1);
                 textBox1.BackColor = System.Drawing.Color.White;
                 textBox1.ForeColor = System.Drawing.Color.Black;
                 textBox1.Location = new System.Drawing.Point(left, right);
-                textBox1.Name = "textBox1";
-                textBox1.Size = new System.Drawing.Size(44, 32);
+                textBox1.Name = "textBox";
+                textBox1.Size = new System.Drawing.Size(200, 32);
                 textBox1.TabIndex = 3;
                 textBox1.Text = i.ToString();
                 textBox1.TextAlign = HorizontalAlignment.Center;
                 textBox1.ReadOnly = true;
-                left = left + 50;
+
+                left = 300;
+
+                TextBox textBox2 = new TextBox();
+                this.Controls.Add(textBox2);
+                textBox2.BackColor = System.Drawing.Color.Black;
+                textBox2.ForeColor = System.Drawing.Color.White;
+                textBox2.Location = new System.Drawing.Point(left, right);
+                textBox2.Name = "textBox";
+                textBox2.Size = new System.Drawing.Size(200, 32);
+                textBox2.TabIndex = 3;
+                textBox2.Text = Result[i].ToString();
+                textBox2.TextAlign = HorizontalAlignment.Center;
+                textBox2.ReadOnly = true;
+                
             }
-
-            int L2 = arr.Length;
-            left = 10;
-            right = 173;
-            for (int i = 0; i < L2; i++)
-            {
-                TextBox textBox1 = new TextBox();
-                this.Controls.Add(textBox1);
-                textBox1.BackColor = System.Drawing.Color.White;
-                textBox1.ForeColor = System.Drawing.Color.Black;
-                textBox1.Location = new System.Drawing.Point(left, right);
-                textBox1.Name = "textBox1";
-                textBox1.Size = new System.Drawing.Size(44, 32);
-                textBox1.TabIndex = 3;
-                textBox1.Text = arr[i].ToString();
-                textBox1.TextAlign = HorizontalAlignment.Center;
-                textBox1.ReadOnly = true;
-                right = right + 38;
-            }
-
-        }
-
-        private void Load_Table()
-        {
 
             left = 60;
-            right = 173;
-
-            for (int i = 0; i < arr.Length; i++)
-            {
-                for (int j = 0; j <= Coins_Required; j++)
-                {
-                    TextBox textBox1 = new TextBox();
-                    this.Controls.Add(textBox1);
-                    textBox1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-                    textBox1.ForeColor = System.Drawing.SystemColors.Info;
-                    textBox1.Location = new System.Drawing.Point(left, right);
-                    textBox1.Name = "textBox1";
-                    textBox1.Size = new System.Drawing.Size(44, 32);
-                    textBox1.TabIndex = 3;
-                    textBox1.Text = Result[i,j].ToString();
-                    textBox1.TextAlign = HorizontalAlignment.Center;
-                    textBox1.ReadOnly = true;
-                    left = left + 50;
-                }
-
-                right = right + 38;
-                left = 60;
-            }
-
-            left = 10;
             right = right + 38;
             back_button.Location = new Point(left, right);
+
         }
         private void table_button_Click(object sender, EventArgs e)
         {
@@ -192,7 +162,7 @@ namespace Algo_Project
             disp_groupBox.Visible = false;
             table_button.Visible = false;
             Load_String();
-            Load_Table();
+
         }
 
         private void ans_textBox_TextChanged(object sender, EventArgs e)
